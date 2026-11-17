@@ -1,6 +1,19 @@
 <Solution>
-  <Project Path="Hotel.AccesoDatos/Hotel.AccesoDatos.csproj" />
-  <Project Path="Hotel.Api/Hotel.Api.csproj" />
-  <Project Path="Hotel.Dominio/Hotel.Dominio.csproj" />
-  <Project Path="Hotel.LogicaNegocio/Hotel.LogicaNegocio.csproj" />
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="Default" />
+    <BuildType Name="Release" />
+  </Configurations>
+  <Project Path="Hotel.AccesoDatos/Hotel.AccesoDatos.csproj">
+    <BuildType Solution="Default|*" Project="Release" />
+  </Project>
+  <Project Path="Hotel.Api/Hotel.Api.csproj">
+    <BuildType Solution="Default|*" Project="Release" />
+  </Project>
+  <Project Path="Hotel.Dominio/Hotel.Dominio.csproj">
+    <BuildType Solution="Default|*" Project="Release" />
+  </Project>
+  <Project Path="Hotel.LogicaNegocio/Hotel.LogicaNegocio.csproj">
+    <BuildType Solution="Default|*" Project="Release" />
+  </Project>
 </Solution>
