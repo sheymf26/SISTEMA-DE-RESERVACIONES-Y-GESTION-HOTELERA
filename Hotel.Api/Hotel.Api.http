@@ -1,6 +1,7 @@
 @Hotel.Api_HostAddress = http://localhost:5170
 
-GET {{Hotel.Api_HostAddress}}/weatherforecast/
+### Salud: la API responde y llega a HotelDB
+GET {{Hotel.Api_HostAddress}}/api/salud
 Accept: application/json
 
 ###
