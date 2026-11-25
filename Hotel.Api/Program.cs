@@ -1,7 +1,7 @@
 using Hotel.AccesoDatos;
 using Hotel.Api.Errores;
 using Hotel.Api.Seguridad;
-using Hotel.LogicaNegocio.Abstracciones;
+using Hotel.LogicaNegocio;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,13 +12,14 @@ if (string.IsNullOrWhiteSpace(cadenaConexion))
         "Falta ConnectionStrings:HotelDB. Configúrela con: " +
         "dotnet user-secrets set \"ConnectionStrings:HotelDB\" \"Server=...;Database=HotelDB;Trusted_Connection=True;TrustServerCertificate=True\" --project Hotel.Api");
 
-//Usuario actual (desde el JWT) y acceso a datos
-builder.Services.AddHttpContextAccessor();
-builder.Services.AddScoped<IUsuarioActual, UsuarioActualHttp>();
+//Capas: acceso a datos, lógica de negocio y seguridad (JWT, permisos, usuario actual)
 builder.Services.AddAccesoDatos(cadenaConexion);
+builder.Services.AddLogicaNegocio();
+builder.Services.AddSeguridad(builder.Configuration);
 
-//Errores: todo sale como ProblemDetails; los THROW de la BD se traducen a 400/401/403/404/409
+//Errores: todo sale como ProblemDetails; los THROW de la BD y las ExcepcionNegocio se traducen a 4xx
 builder.Services.AddProblemDetails();
+builder.Services.AddExceptionHandler<ManejadorErroresNegocio>();
 builder.Services.AddExceptionHandler<ManejadorErroresSql>();
 
 //CORS: el front se sirve aparte (VS Code: Live Server / Vite) y AllowCredentials para la cookie del refresh token
@@ -40,11 +41,12 @@ app.UseStatusCodePages();
 
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.MapOpenApi().AllowAnonymous();
 }
 
 app.UseHttpsRedirection();
 app.UseCors(PoliticaFront);
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

@@ -1,5 +1,7 @@
 using Hotel.AccesoDatos.Contexto;
 using Hotel.AccesoDatos.Procedimientos;
+using Hotel.AccesoDatos.Repositorios;
+using Hotel.LogicaNegocio.Seguridad;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -14,6 +16,7 @@ public static class ServiciosAccesoDatos
             .UseSqlServer(cadenaConexion)
             .AddInterceptors(sp.GetRequiredService<SesionUsuarioInterceptor>()));
         services.AddScoped<EjecutorSp>();
+        services.AddScoped<IRepositorioSeguridad, RepositorioSeguridad>();
         return services;
     }
 }

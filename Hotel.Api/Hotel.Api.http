@@ -1,7 +1,114 @@
 @Hotel.Api_HostAddress = http://localhost:5170
+# Pegue aquí el accessToken que devuelve el login
+@token = PEGUE_EL_ACCESS_TOKEN
 
 ### Salud: la API responde y llega a HotelDB
 GET {{Hotel.Api_HostAddress}}/api/salud
 Accept: application/json
+
+### 1) Arranque (una sola vez): crea el primer ADMIN. La clave está en user secrets (Inicializacion:Clave)
+POST {{Hotel.Api_HostAddress}}/api/auth/inicializar
+Content-Type: application/json
+
+{
+  "clave": "PEGUE_LA_CLAVE_DE_INICIALIZACION",
+  "persona": {
+    "tipoIdentificacion": "CEDULA",
+    "identificacion": "101110111",
+    "nombre": "Nombre",
+    "apellidos": "Apellidos",
+    "correo": "admin@hotel.test"
+  },
+  "empleado": {
+    "idPuesto": 1,
+    "tipoSalario": "MENSUAL",
+    "montoSalario": 1500000,
+    "fechaIngreso": "2026-01-15"
+  },
+  "nombreUsuario": "admin",
+  "password": "Admin2026!"
+}
+
+### 2) Login web (refresh token en cookie HttpOnly) — origen APP lo devuelve en el cuerpo
+POST {{Hotel.Api_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "login": "admin",
+  "password": "Admin2026!",
+  "origen": "WEB"
+}
+
+### Usuario actual y sus permisos
+GET {{Hotel.Api_HostAddress}}/api/auth/yo
+Authorization: Bearer {{token}}
+
+### Renovar el access token (la web usa la cookie; la app manda { "refreshToken": "..." })
+POST {{Hotel.Api_HostAddress}}/api/auth/refrescar
+
+### Registro de cliente desde la app
+POST {{Hotel.Api_HostAddress}}/api/auth/registro
+Content-Type: application/json
+
+{
+  "persona": {
+    "tipoIdentificacion": "PASAPORTE",
+    "identificacion": "AB12345",
+    "nombre": "Cliente",
+    "apellidos": "De Prueba",
+    "correo": "cliente@correo.test"
+  },
+  "nombreUsuario": "cliente1",
+  "password": "Cliente2026"
+}
+
+### Usuarios (módulo SEGURIDAD)
+GET {{Hotel.Api_HostAddress}}/api/usuarios
+Authorization: Bearer {{token}}
+
+### Roles con sus permisos por módulo
+GET {{Hotel.Api_HostAddress}}/api/roles
+Authorization: Bearer {{token}}
+
+### Crear usuario para una persona existente (contraseña temporal)
+POST {{Hotel.Api_HostAddress}}/api/usuarios
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "idPersona": 1,
+  "nombreUsuario": "recepcion1",
+  "passwordTemporal": "Temporal2026",
+  "codigoRol": "RECEPCIONISTA"
+}
+
+### Asignar / quitar rol
+PUT {{Hotel.Api_HostAddress}}/api/usuarios/1/roles/RECEPCIONISTA
+Authorization: Bearer {{token}}
+
+###
+DELETE {{Hotel.Api_HostAddress}}/api/usuarios/1/roles/RECEPCIONISTA
+Authorization: Bearer {{token}}
+
+### Activar / desactivar usuario
+PATCH {{Hotel.Api_HostAddress}}/api/usuarios/1/estado
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{ "activo": false }
+
+### Cambiar contraseña (cierra todas las sesiones)
+POST {{Hotel.Api_HostAddress}}/api/auth/cambiar-password
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "passwordActual": "Admin2026!",
+  "passwordNueva": "OtraClave2026"
+}
+
+### Cerrar sesión
+POST {{Hotel.Api_HostAddress}}/api/auth/cerrar-sesion
+Authorization: Bearer {{token}}
 
 ###
