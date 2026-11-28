@@ -1,0 +1,17 @@
+<section class="rooms" aria-labelledby="rooms-title">
+  <h1 id="rooms-title">Habitaciones</h1>
+  <p class="intro">Explora y administra las habitaciones del hotel.</p>
+
+  <app-room-filters [(filters)]="filters" />
+
+  <div class="design-note">
+    <span>Vista de diseño</span>
+    <p>Tarjetas de muestra sin datos reales. Los filtros no consultan disponibilidad.</p>
+  </div>
+
+  <div class="rooms-grid" aria-label="Vista de diseño de tarjetas de habitaciones">
+    @for (slot of previewSlots; track slot) {
+      <app-room-card />
+    }
+  </div>
+</section>

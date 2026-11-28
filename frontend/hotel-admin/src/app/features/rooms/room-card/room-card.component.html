@@ -1,0 +1,42 @@
+<article class="room-card" [class.design-preview]="!room()"
+  [attr.aria-label]="room() ? 'Habitación ' + room()?.code : 'Tarjeta de habitación: vista de diseño'">
+  <div class="photo">
+    @if (photoUrl(); as photo) {
+      <img [src]="photo" [alt]="'Habitación ' + room()?.code" loading="lazy" (error)="onPhotoError()">
+    } @else {
+      <div class="photo-placeholder">
+        <app-icon name="bed" />
+        <span>Fotografía de la habitación</span>
+      </div>
+    }
+  </div>
+
+  <div class="room-information">
+    @if (room(); as data) {
+      <div class="card-heading">
+        <h2>{{ data.code }}</h2>
+        <span class="status" [attr.data-status]="data.status">{{ statusLabels[data.status] }}</span>
+      </div>
+      <p class="room-type">{{ data.typeName }}</p>
+      <p class="secondary">{{ data.buildingName }} · Piso {{ data.floor }}</p>
+      <p class="capacity"><app-icon name="users" /> Hasta {{ data.guestCapacity }} huéspedes</p>
+      <div class="price">
+        <strong>{{ priceLabel() ?? '—' }}</strong>
+        <span>por noche</span>
+      </div>
+    } @else {
+      <div class="card-heading">
+        <h2>Código de habitación</h2>
+      </div>
+      <p class="room-type">Tipo de habitación</p>
+      <p class="secondary">Edificio · Piso</p>
+      <p class="capacity"><app-icon name="users" /> Capacidad de huéspedes</p>
+      <div class="preview-meta">
+        <span>Precio por noche <strong>—</strong></span>
+        <span class="status">Estado —</span>
+      </div>
+    }
+
+    <ion-button expand="block" shape="round" [disabled]="true">Ver detalles</ion-button>
+  </div>
+</article>

@@ -1,0 +1,69 @@
+.rooms {
+  container-name: rooms;
+  container-type: inline-size;
+}
+
+h1 {
+  margin: 0;
+  color: var(--green);
+  font-size: clamp(1.8rem, 3.2vw, 2.75rem);
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 1.2;
+}
+
+.intro {
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.design-note {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.design-note > span {
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  color: var(--green-secondary);
+  background: var(--surface);
+  font-size: 0.65rem;
+  font-weight: 500;
+}
+
+.design-note p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+@container rooms (min-width: 1280px) {
+  .rooms-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@container rooms (max-width: 900px) {
+  .rooms-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@container rooms (max-width: 540px) {
+  .rooms-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,21 @@
+<header>
+  <div class="section">
+    <button type="button" class="menu-button" (click)="toggleMenu.emit()"
+      aria-label="Abrir menú de navegación" aria-controls="main-navigation" [attr.aria-expanded]="menuOpen()">
+      <app-icon name="menu" />
+    </button>
+    <span class="system-name">Gestión Hotelera</span>
+    <span class="divider" aria-hidden="true">/</span>
+    <span class="module-name">{{ section() }}</span>
+  </div>
+  <div class="account">
+    <div class="user">
+      <span>{{ session.user()?.firstName }}</span>
+      <small>{{ session.user()?.roleLabel }}</small>
+    </div>
+    <button type="button" class="logout" (click)="logout.emit()" aria-label="Cerrar sesión">
+      <app-icon name="logout" />
+      <span>Cerrar sesión</span>
+    </button>
+  </div>
+</header>

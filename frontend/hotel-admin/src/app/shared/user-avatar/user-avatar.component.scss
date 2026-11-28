@@ -1,0 +1,36 @@
+:host {
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+ion-avatar {
+  display: grid;
+  place-items: center;
+  width: var(--user-avatar-size, 60px);
+  height: var(--user-avatar-size, 60px);
+  overflow: hidden;
+  border: 1px solid #d5dfd6;
+  border-radius: 50%;
+  outline: 1px solid var(--user-avatar-outline-color, transparent);
+  outline-offset: 7px;
+  background: #eef3ec;
+  color: var(--green);
+  font-size: var(--user-avatar-font-size, 1.25rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 560px) {
+  ion-avatar {
+    width: var(--user-avatar-size, 48px);
+    height: var(--user-avatar-size, 48px);
+    font-size: var(--user-avatar-font-size, 1rem);
+  }
+}

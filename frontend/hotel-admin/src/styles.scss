@@ -1,0 +1,60 @@
+@import '@ionic/angular/css/core.css';
+
+:root {
+  --green: #083d2b;
+  --green-secondary: #245b45;
+  --surface: #f8f9f7;
+  --border: #e2e6e2;
+  --text: #172b22;
+  --muted: #68766c;
+  --ion-color-primary: #083d2b;
+  --ion-color-primary-rgb: 8, 61, 43;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-shade: #073626;
+  --ion-color-primary-tint: #245b45;
+  --ion-background-color: #ffffff;
+  --ion-text-color: #172b22;
+  --ion-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  color: var(--text);
+  background: #fff;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+input,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 2px solid var(--green-secondary);
+  outline-offset: 4px;
+}
+
+input:focus-visible {
+  outline-offset: 2px;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+/* Angular Router y el documento conservan el desplazamiento del escritorio. */
+ion-app.ion-page {
+  display: block;
+  position: relative;
+  min-height: 100dvh;
+  contain: none;
+  overflow: visible;
+}

@@ -1,0 +1,242 @@
+.login {
+  display: grid;
+  grid-template-columns: 46% 54%;
+  min-height: 100dvh;
+}
+
+.identity {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 44px 12%;
+  background: var(--green);
+  color: #fff;
+}
+
+.wordmark {
+  color: inherit;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  text-decoration: none;
+}
+
+.wordmark span {
+  display: block;
+  margin-top: 8px;
+  color: #b5c9bb;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+}
+
+.identity-content {
+  padding: 100px 0;
+}
+
+.identity .eyebrow {
+  color: #b5c9bb;
+}
+
+h1 {
+  margin: 24px 0 30px;
+  font-size: clamp(2.5rem, 4.3vw, 4.6rem);
+  font-weight: 500;
+  letter-spacing: -0.06em;
+  line-height: 1.08;
+}
+
+.identity-rule {
+  width: 46px;
+  height: 1px;
+  background: #9eb89e;
+}
+
+.identity-content p {
+  margin-top: 24px;
+  color: #c9d8ce;
+  line-height: 1.7;
+  font-size: 0.9rem;
+}
+
+.identity-footer,
+.access-footer {
+  font-size: 0.7rem;
+  color: #b5c9bb;
+}
+
+.access {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 72px 40px;
+}
+
+.form-wrap {
+  width: 100%;
+  max-width: 380px;
+}
+
+.eyebrow {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--green-secondary);
+}
+
+h2 {
+  margin: 15px 0 12px;
+  color: var(--green);
+  font-size: 2.4rem;
+  letter-spacing: -0.055em;
+  font-weight: 600;
+}
+
+.intro {
+  margin: 0 0 35px;
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  min-height: 50px;
+  padding: 12px 15px;
+  border: 1px solid #cbd3cc;
+  border-radius: 10px;
+  background: #fff;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.875rem;
+}
+
+input::placeholder {
+  color: #7a857e;
+}
+
+#username {
+  margin-bottom: 23px;
+}
+
+.password-field {
+  position: relative;
+}
+
+.password-field input {
+  padding-right: 52px;
+}
+
+.show-password {
+  position: absolute;
+  top: 3px;
+  right: 4px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.primary-button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 28px;
+  padding: 16px 22px;
+  border: 0;
+  border-radius: 100px;
+  background: var(--green);
+  color: white;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.primary-button:hover:enabled {
+  background: var(--green-secondary);
+}
+
+.primary-button:disabled {
+  opacity: 0.65;
+  cursor: default;
+}
+
+.demo-note {
+  margin-top: 35px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.demo-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+}
+
+.demo-note p {
+  margin: 10px 0 0;
+  font-size: 0.75rem;
+  line-height: 1.7;
+}
+
+.demo-note strong {
+  color: var(--green-secondary);
+  font-weight: 500;
+}
+
+.access-footer {
+  position: absolute;
+  bottom: 28px;
+  color: var(--muted);
+}
+
+.error {
+  color: #9b352e;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 760px) {
+  .login {
+    grid-template-columns: 1fr;
+  }
+
+  .identity {
+    padding: 26px;
+  }
+
+  .identity-content {
+    padding: 40px 0 0;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0;
+  }
+
+  .identity-content p,
+  .identity-rule,
+  .identity-footer {
+    display: none;
+  }
+
+  .access {
+    padding: 42px 26px 78px;
+  }
+}

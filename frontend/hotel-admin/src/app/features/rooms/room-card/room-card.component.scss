@@ -1,0 +1,159 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+
+.room-card {
+  height: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  background: white;
+}
+
+.photo {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 9px;
+  background: #f0f2ed;
+}
+
+.photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  height: 100%;
+  color: #768576;
+  font-size: 0.7rem;
+}
+
+.photo-placeholder app-icon {
+  width: 32px;
+  height: 32px;
+  color: #8d9c89;
+}
+
+.room-information {
+  padding: 20px 10px 10px;
+}
+
+.card-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+h2 {
+  margin: 0;
+  color: var(--green);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  overflow-wrap: anywhere;
+}
+
+.room-type {
+  margin: 10px 0;
+  color: var(--text);
+  font-size: 0.8rem;
+}
+
+.secondary {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.capacity {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 18px 0 24px;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.capacity app-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.price,
+.preview-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 28px;
+  margin-bottom: 20px;
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+
+.price strong {
+  color: var(--text);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.preview-meta strong {
+  margin-left: 6px;
+  font-weight: 500;
+}
+
+.status {
+  display: inline-block;
+  padding: 5px 8px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  color: var(--muted);
+  font-size: 0.6rem;
+  white-space: nowrap;
+}
+
+.status[data-status='DISPONIBLE'] {
+  border-color: #cddfce;
+  color: var(--green-secondary);
+}
+
+.status[data-status='OCUPADA'],
+.status[data-status='LIMPIEZA'] {
+  border-color: #e4dcc6;
+  color: #766132;
+}
+
+.status[data-status='MANTENIMIENTO'],
+.status[data-status='FUERA_SERVICIO'] {
+  color: #775955;
+}
+
+ion-button {
+  --background: var(--green);
+  --color: white;
+  --border-radius: 100px;
+  --box-shadow: none;
+  --padding-top: 13px;
+  --padding-bottom: 13px;
+  min-height: 44px;
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+ion-button.button-disabled {
+  opacity: 0.72;
+}

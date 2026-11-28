@@ -1,0 +1,42 @@
+<form class="filters" aria-label="Filtros de habitaciones" (submit)="$event.preventDefault()">
+  <div class="field">
+    <label for="room-building">Edificio</label>
+    <select id="room-building" name="building" [ngModel]="filters().building"
+      (ngModelChange)="setFilter('building', $event)">
+      <option value="">Todos los edificios</option>
+      @for (building of buildings; track building) {
+        <option [ngValue]="building">Edificio {{ building }}</option>
+      }
+    </select>
+  </div>
+  <div class="field">
+    <label for="room-floor">Piso</label>
+    <select id="room-floor" name="floor" [ngModel]="filters().floor"
+      (ngModelChange)="setFilter('floor', $event)">
+      <option value="">Todos</option>
+      @for (floor of floors; track floor) {
+        <option [ngValue]="floor">Piso {{ floor }}</option>
+      }
+    </select>
+  </div>
+  <div class="field">
+    <label for="room-type">Tipo de habitación</label>
+    <select id="room-type" name="type" [ngModel]="filters().type"
+      (ngModelChange)="setFilter('type', $event)">
+      <option value="">Todos los tipos</option>
+      @for (type of types; track type) {
+        <option [ngValue]="type">{{ type }}</option>
+      }
+    </select>
+  </div>
+  <div class="field">
+    <label for="room-status">Estado</label>
+    <select id="room-status" name="status" [ngModel]="filters().status"
+      (ngModelChange)="setFilter('status', $event)">
+      <option value="">Todos los estados</option>
+      @for (status of statuses; track status[0]) {
+        <option [ngValue]="status[0]">{{ status[1] }}</option>
+      }
+    </select>
+  </div>
+</form>

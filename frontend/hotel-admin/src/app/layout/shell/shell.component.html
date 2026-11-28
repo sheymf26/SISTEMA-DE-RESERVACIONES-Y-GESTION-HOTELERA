@@ -1,0 +1,18 @@
+<a class="skip-link" href="#main-content">Ir al contenido</a>
+@if (menuOpen()) {
+  <button class="backdrop" type="button" (click)="closeMenu()" aria-label="Cerrar menú"></button>
+}
+
+<div class="shell">
+  <aside class="sidebar" [class.open]="menuOpen()" aria-label="Navegación principal"
+    [attr.inert]="compact() && !menuOpen() ? '' : null">
+    <app-sidebar (navigated)="closeMenu()" (closeMenu)="closeMenu()" />
+  </aside>
+  <div class="workspace">
+    <app-header [section]="section()" [menuOpen]="menuOpen()"
+      (toggleMenu)="openMenu()" (logout)="signOut()" />
+    <main id="main-content" tabindex="-1">
+      <router-outlet />
+    </main>
+  </div>
+</div>

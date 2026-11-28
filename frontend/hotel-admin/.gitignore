@@ -1,0 +1,10 @@
+/node_modules/
+/dist/
+/.angular/
+/out-tsc/
+/coverage/
+*.log
+
+# La regla Icon del repositorio también coincide con esta carpeta en Windows.
+!/src/app/shared/icon/
+!/src/app/shared/icon/**

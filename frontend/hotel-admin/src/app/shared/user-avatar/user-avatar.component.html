@@ -1,0 +1,7 @@
+<ion-avatar role="img" [attr.aria-label]="'Avatar de ' + name()" [attr.data-user-id]="userId()">
+  @if (visiblePhotoUrl(); as photo) {
+    <img [src]="photo" alt="" (error)="onPhotoError()">
+  } @else {
+    <span aria-hidden="true">{{ initials() }}</span>
+  }
+</ion-avatar>

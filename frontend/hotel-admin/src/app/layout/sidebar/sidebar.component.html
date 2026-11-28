@@ -1,0 +1,23 @@
+<div class="brand">
+  <a routerLink="/dashboard" (click)="navigated.emit()">Gestión Hotelera<span>ADMINISTRACIÓN</span></a>
+  <button class="close-button" type="button" (click)="closeMenu.emit()" aria-label="Cerrar menú">
+    <app-icon name="close" />
+  </button>
+</div>
+
+<nav id="main-navigation" aria-label="Módulos del sistema">
+  @for (group of groups(); track group.label) {
+    <section [attr.aria-label]="group.label">
+      <h2>{{ group.label }}</h2>
+      @for (module of group.modules; track module.path) {
+        <a [routerLink]="['/', module.path]" routerLinkActive="active"
+          ariaCurrentWhenActive="page" (click)="navigated.emit()">
+          <app-icon [name]="module.icon" />
+          <span>{{ module.label }}</span>
+        </a>
+      }
+    </section>
+  }
+</nav>
+
+<div class="sidebar-footer">Sistema de Gestión Hotelera</div>

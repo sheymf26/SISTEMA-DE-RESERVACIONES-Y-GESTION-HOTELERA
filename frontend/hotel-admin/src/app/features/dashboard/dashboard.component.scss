@@ -1,0 +1,86 @@
+:host {
+  display: block;
+  container-name: dashboard;
+  container-type: inline-size;
+}
+
+.welcome {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  width: fit-content;
+  max-width: 100%;
+  padding: 20px 8px 24px 0;
+  --greeting-font-size: clamp(4rem, 6.8cqi, 4.5rem);
+  --greeting-letter-spacing: -0.035em;
+  --greeting-line-height: 1.12;
+  --greeting-max-width: 15ch;
+  --user-avatar-size: 170px;
+  --user-avatar-font-size: 4rem;
+  --user-avatar-outline-color: #dce4d8;
+}
+
+.welcome app-greeting {
+  min-width: 0;
+}
+
+p {
+  margin: 20px 0 32px;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+button {
+  padding: 13px 20px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  background: var(--surface);
+  color: var(--green-secondary);
+  font: inherit;
+  font-size: 0.875rem;
+  opacity: 0.75;
+  cursor: default;
+}
+
+@container dashboard (max-width: 850px) {
+  .welcome {
+    gap: 36px;
+    --greeting-font-size: 4rem;
+    --user-avatar-size: 160px;
+    --user-avatar-font-size: 3.75rem;
+  }
+}
+
+@container dashboard (max-width: 600px) {
+  .welcome {
+    gap: 24px;
+    --greeting-font-size: clamp(2.25rem, 8cqi, 3rem);
+    --user-avatar-size: 120px;
+    --user-avatar-font-size: 3rem;
+  }
+}
+
+@container dashboard (max-width: 380px) {
+  .welcome {
+    gap: 20px;
+    --greeting-font-size: 2.25rem;
+    --user-avatar-size: 104px;
+    --user-avatar-font-size: 2.5rem;
+  }
+}
+
+@container dashboard (max-width: 290px) {
+  .welcome {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+    --user-avatar-size: 120px;
+  }
+}

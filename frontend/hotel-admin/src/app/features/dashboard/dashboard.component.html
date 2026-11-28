@@ -1,0 +1,14 @@
+<div class="welcome">
+  <app-greeting />
+  @if (session.user(); as user) {
+    <app-user-avatar [userId]="user.id" [name]="user.firstName" [photoUrl]="user.photoUrl" />
+  }
+</div>
+@if (session.user()?.roles?.includes('jefe')) {
+  <p>Estas son las estadísticas generales de tu hotel.</p>
+  <div class="actions" aria-label="Accesos del jefe general">
+    @for (action of actions; track action) {
+      <button type="button" disabled>{{ action }}</button>
+    }
+  </div>
+}
